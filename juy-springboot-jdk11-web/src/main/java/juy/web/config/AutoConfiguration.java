@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 @Configuration
-@ComponentScan("juy.web.controller")
+@ComponentScan("juy.web")
 public class AutoConfiguration {
 
 }
