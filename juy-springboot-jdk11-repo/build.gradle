@@ -1,7 +1,3 @@
-dependencies {
-	api project(':juy-springboot-jdk11-model')
-}
-
 bootJar {
 	enabled = false
 }

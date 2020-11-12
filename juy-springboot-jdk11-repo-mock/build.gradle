@@ -1,0 +1,11 @@
+dependencies {
+    api project(':juy-springboot-jdk11-repo')
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+	enabled = true
+}

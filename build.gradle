@@ -26,9 +26,17 @@ allprojects {
 	}
 
 	dependencies {
-		
-		api 'org.apache.commons:commons-lang3'
+
 		api 'commons-io:commons-io:2.8.0'
+
+		api 'org.apache.commons:commons-lang3'
+		api 'org.slf4j:slf4j-api'
+		api 'ch.qos.logback:logback-classic'
+		api 'ch.qos.logback:logback-core'
+		api 'javax.annotation:javax.annotation-api'
+
+		api 'org.springframework.boot:spring-boot'
+		api 'org.springframework.boot:spring-boot-autoconfigure'
 
 		implementation 'org.projectlombok:lombok'
 		annotationProcessor 'org.projectlombok:lombok'

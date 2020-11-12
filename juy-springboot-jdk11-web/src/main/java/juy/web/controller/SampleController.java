@@ -1,5 +1,8 @@
 package juy.web.controller;
 
+import juy.repository.model.Sample;
+import juy.service.SampleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -17,35 +20,25 @@ import java.util.concurrent.atomic.AtomicInteger;
 @RequestMapping("/sample")
 public class SampleController {
 
-    private final List<Sample> samples = new ArrayList<>();
-    private AtomicInteger index = new AtomicInteger(0);
-
-    @PostConstruct
-    public void init()
-    {
-        for (int i = 0; i < 10; i++)
-        {
-           samples.add(Sample.create(i, "name_" + i, UUID.randomUUID().toString()));
-           index.incrementAndGet();
-        }
-    }
+    @Autowired
+    private SampleService sampleService;
 
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
     public List<Sample> list()
     {
-        return samples;
+        return sampleService.list();
     }
 
     @GetMapping(path = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
     public Sample findById(@PathVariable("id") Integer id)
     {
-        return samples.stream().filter( e -> id.equals(e.getId())).findFirst().get();
+        return sampleService.findById(id);
     }
 
     @DeleteMapping(path = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<String> delete(@PathVariable("id") Integer id)
     {
-        if (samples.remove(id))
+        if (sampleService.delete(id))
         {
             return ResponseEntity.ok("");
         }
@@ -55,86 +48,22 @@ public class SampleController {
     @PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = {MediaType.APPLICATION_JSON_VALUE})
     public Sample create(@RequestBody Sample sample)
     {
-        sample.setId(index.incrementAndGet());
-        samples.add(sample);
-        return sample;
+        return sampleService.save(sample);
     }
 
     @PutMapping(consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = {MediaType.APPLICATION_JSON_VALUE})
     public Sample replace(@RequestBody Sample sample)
     {
-        if (samples.remove(sample))
-        {
-            samples.add(sample);
-        }
+        sampleService.replace(sample);
         return sample;
     }
 
     @PatchMapping(consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = {MediaType.APPLICATION_JSON_VALUE})
     public Sample update(@RequestBody Sample sample)
     {
-        final int reference = samples.indexOf(sample);
-        if (reference != -1)
-        {
-            final Sample existing = samples.get(reference);
-            existing.setName(sample.getName());
-            existing.setValue(sample.getValue());
-        }
+        sampleService.update(sample);
         return sample;
     }
 
-}
-
-class Sample {
-
-    private Integer id;
-    private String name;
-    private String value;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
-    }
-
-    public static Sample create(final Integer id, final String name, final String value)
-    {
-        final Sample sample = new Sample();
-        sample.id = id;
-        sample.name = name;
-        sample.value = value;
-        return sample;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Sample sample = (Sample) o;
-        return id.equals(sample.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }
 

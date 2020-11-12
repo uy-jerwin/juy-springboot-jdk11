@@ -16,7 +16,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
@@ -35,10 +34,10 @@ import java.util.UUID;
 public class CustomFilterConfiguration {
 
     @Bean
-    public FilterRegistrationBean<CachingRequestResponseFilter> loggingFilter(){
-        final FilterRegistrationBean<CachingRequestResponseFilter> registrationBean = new FilterRegistrationBean<>();
+    public FilterRegistrationBean<LoggingFilter> loggingFilter(){
+        final FilterRegistrationBean<LoggingFilter> registrationBean = new FilterRegistrationBean<>();
 
-        registrationBean.setFilter(new CachingRequestResponseFilter());
+        registrationBean.setFilter(new LoggingFilter());
         registrationBean.addUrlPatterns("/*");
 
         return registrationBean;
@@ -47,12 +46,12 @@ public class CustomFilterConfiguration {
 
 @Slf4j
 @Order(1)
-class CachingRequestResponseFilter extends OncePerRequestFilter {
+class LoggingFilter extends OncePerRequestFilter {
 
     private static final String MDC_UUID = "UUID";
     private final ObjectMapper mapper = new ObjectMapper();
 
-    public CachingRequestResponseFilter() {
+    public LoggingFilter() {
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
     }
 
