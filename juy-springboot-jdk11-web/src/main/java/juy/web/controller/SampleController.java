@@ -52,7 +52,7 @@ public class SampleController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("");
     }
 
-    @PostMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
+    @PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = {MediaType.APPLICATION_JSON_VALUE})
     public Sample create(@RequestBody Sample sample)
     {
         sample.setId(index.incrementAndGet());
@@ -60,7 +60,7 @@ public class SampleController {
         return sample;
     }
 
-    @PutMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
+    @PutMapping(consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = {MediaType.APPLICATION_JSON_VALUE})
     public Sample replace(@RequestBody Sample sample)
     {
         if (samples.remove(sample))
@@ -70,7 +70,7 @@ public class SampleController {
         return sample;
     }
 
-    @PatchMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
+    @PatchMapping(consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = {MediaType.APPLICATION_JSON_VALUE})
     public Sample update(@RequestBody Sample sample)
     {
         final int reference = samples.indexOf(sample);
