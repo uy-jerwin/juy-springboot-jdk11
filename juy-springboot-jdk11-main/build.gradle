@@ -1,0 +1,12 @@
+dependencies {
+	api project(':juy-springboot-jdk11-web')
+}
+
+bootJar {
+	enabled = true
+	mainClassName = 'juy.App'
+}
+
+jar {
+	enabled = false
+}
