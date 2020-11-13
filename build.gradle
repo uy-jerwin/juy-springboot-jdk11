@@ -44,6 +44,18 @@ allprojects {
 		testAnnotationProcessor 'org.projectlombok:lombok'
 	}
 
+	task sourcesJar(type: Jar) {
+		from project.sourceSets.main.allSource
+		manifest = project.tasks.jar.manifest
+		archiveClassifier = 'sources'
+	}
+
+	task javadocJar(type: Jar) {
+		from project.tasks.javadoc.outputs
+		manifest = project.tasks.jar.manifest
+		archiveClassifier = 'javadoc'
+	}
+
 }
 
 bootJar {

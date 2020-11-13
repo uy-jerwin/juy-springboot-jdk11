@@ -13,9 +13,11 @@ import org.slf4j.MDC;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
@@ -30,23 +32,9 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.UUID;
 
-@Configuration
-public class CustomFilterConfiguration {
-
-    @Bean
-    public FilterRegistrationBean<LoggingFilter> loggingFilter(){
-        final FilterRegistrationBean<LoggingFilter> registrationBean = new FilterRegistrationBean<>();
-
-        registrationBean.setFilter(new LoggingFilter());
-        registrationBean.addUrlPatterns("/*");
-
-        return registrationBean;
-    }
-}
-
 @Slf4j
-@Order(1)
-class LoggingFilter extends OncePerRequestFilter {
+@Component
+public class LoggingFilter extends OncePerRequestFilter {
 
     private static final String MDC_UUID = "UUID";
     private final ObjectMapper mapper = new ObjectMapper();

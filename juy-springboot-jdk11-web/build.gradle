@@ -1,6 +1,9 @@
 dependencies {
 	api project(':juy-springboot-jdk11-service')
 	api 'org.springframework.boot:spring-boot-starter-web'
+	api 'org.springframework.boot:spring-boot-starter-security'
+	api 'io.jsonwebtoken:jjwt:0.9.1'
+	api 'javax.xml.bind:jaxb-api:2.3.1'
 }
 
 bootJar {
