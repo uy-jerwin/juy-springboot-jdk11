@@ -4,6 +4,7 @@ dependencies {
 	api 'org.springframework.boot:spring-boot-starter-security'
 	api 'io.jsonwebtoken:jjwt:0.9.1'
 	api 'javax.xml.bind:jaxb-api:2.3.1'
+	api 'org.springdoc:springdoc-openapi-ui:1.2.32'
 }
 
 bootJar {
