@@ -2,8 +2,13 @@ dependencies {
     api project(':juy-springboot-jdk11-repo')
     api project(':juy-springboot-jdk11-spring-ext')
 
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'com.h2database:h2'
+    api 'org.modelmapper:modelmapper:2.3.7'
+
+    api 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    api 'com.h2database:h2'
+    api 'org.liquibase:liquibase-core'
+
 }
 
 bootJar {

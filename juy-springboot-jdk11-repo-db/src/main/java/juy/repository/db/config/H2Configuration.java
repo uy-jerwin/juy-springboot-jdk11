@@ -6,6 +6,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -18,6 +19,11 @@ import java.util.HashMap;
 @Configuration
 @EnableConfigurationProperties(DataSourceProperties.class)
 @PropertySource(value = "classpath:config/repo-db.yml", factory = YamlPropertySourceFactory.class)
+@EnableJpaRepositories(
+        basePackages = "juy.repository.db.repository",
+        entityManagerFactoryRef = "juy.repository.db.config.LocalContainerEntityManagerFactoryBean",
+        transactionManagerRef = "juy.repository.db.config.PlatformTransactionManager"
+)
 public class H2Configuration {
 
     @Autowired
@@ -34,6 +40,7 @@ public class H2Configuration {
 
         final HashMap<String, Object> properties = new HashMap<>();
         properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+
         em.setJpaPropertyMap(properties);
 
         return em;

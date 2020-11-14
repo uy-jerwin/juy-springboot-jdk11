@@ -1,20 +1,21 @@
 package juy.repository.db.model;
 
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 
-import javax.annotation.processing.Generated;
 import javax.persistence.*;
 
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
+@Table(name = "SAMPLE", schema = "PUBLIC")
 @Entity(name = "SAMPLE")
-public class Sample {
+public class SampleEntity {
 
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @EqualsAndHashCode.Exclude
     @Column(name = "NAME")

@@ -1,14 +1,11 @@
 package juy.repository.model;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @EqualsAndHashCode
 @ToString
-@Builder
 public class Sample {
 
     private Integer id;

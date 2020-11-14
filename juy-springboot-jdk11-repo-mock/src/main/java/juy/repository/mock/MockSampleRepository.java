@@ -24,10 +24,10 @@ public class MockSampleRepository implements SampleRepository {
     {
         for (int i = 0; i < 10; i++)
         {
-            final Sample sample = Sample.builder()
-                    .id(index.incrementAndGet())
-                    .name("name_" + i)
-                    .value(UUID.randomUUID().toString()).build();
+            final Sample sample = new Sample();
+            sample.setId(index.incrementAndGet());
+            sample.setName("name_" + i);
+            sample.setValue(UUID.randomUUID().toString());
             samples.add(sample);
         }
     }
