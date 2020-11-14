@@ -1,6 +1,7 @@
 dependencies {
 	api project(':juy-springboot-jdk11-repo')
 	api project(':juy-springboot-jdk11-repo-mock')
+	api project(':juy-springboot-jdk11-repo-db')
 }
 
 bootJar {

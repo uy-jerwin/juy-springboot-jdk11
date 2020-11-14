@@ -1,0 +1,9 @@
+repo:
+  db:
+    datasource:
+      url: "jdbc:h2:mem:sampledb"
+      driverClassName: "org.h2.Driver"
+      username: "sa"
+      password: "password"
+
+

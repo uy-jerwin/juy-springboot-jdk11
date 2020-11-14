@@ -5,3 +5,6 @@ include 'juy-springboot-jdk11-repo-mock'
 include 'juy-springboot-jdk11-service'
 include 'juy-springboot-jdk11-web'
 include 'juy-springboot-jdk11-main'
+include 'juy-springboot-jdk11-repo-db'
+include 'juy-springboot-jdk11-spring-ext'
+

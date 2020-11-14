@@ -1,5 +1,6 @@
 repo:
   mock: true
+  db: true
 
 management:
   endpoints:
