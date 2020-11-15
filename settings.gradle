@@ -9,5 +9,6 @@ include 'juy-springboot-jdk11-repo-db'
 include 'juy-springboot-jdk11-spring-ext'
 include 'juy-springboot-jdk11-repo-api'
 include 'juy-springboot-jdk11-enc'
+include 'juy-springboot-jdk11-notification'
 
 

@@ -1,0 +1,9 @@
+notification:
+  auth:
+    url: "ENC(ezoqpEEGZz4XelU5+cgr0eGU3fdtbtEWJxieaiXQtVjvBiwUSdrIZjkTgBTR09T5eM8xrQYZMEdorYpU/X90dss4l1qUdexvl6Bjnxtqs/Y=)"
+    grantType: "ENC(W04ZWNayMOlZK3y6QSVgioTRuFGRQPV756VeHowNJqxrEQRBvcrZ0BGZhhT8DrbtJoo/uVMdj7eCUBpxzczmDA==)"
+    clientId: "ENC(fDrs9deQJ11qCBLTf1DGA6hszITLcvj6/CUGWzSUK8+cj4TfQM4R9gGYSOWBMS+E)"
+    clientSecret: "ENC(QALNfKTXHzqXLVe4QSnb4nVXH0M3Nb9gYxJymYzzttODkYY22OU8ZW9dgP22k/Id4CeZhVcAOeUOz5ycozIwxjIA4xTfTR+S0/FKAoFo5PA=)"
+  server:
+    url: "ENC(YVQhaU4qgeFLFKjxtebDbP8IJu57QWaezgdfY77GEMrEzCPLJu8LIRVSHplXWpbiOTXIZhnO4YtdmHxOeGrGc77N7vW4G/+8gk8o6xTsw90QQaQhWC187JKpNZK9ANkp)"
+

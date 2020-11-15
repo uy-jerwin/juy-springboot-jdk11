@@ -1,0 +1,16 @@
+dependencies {
+	api project(':juy-springboot-jdk11-spring-ext')
+	api project(':juy-springboot-jdk11-enc')
+
+	api 'org.springframework:spring-web'
+	api 'com.fasterxml.jackson.core:jackson-databind'
+	api 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+}
+
+bootJar {
+	enabled = false
+}
+
+jar {
+	enabled = true
+}

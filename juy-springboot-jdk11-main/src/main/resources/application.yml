@@ -2,7 +2,10 @@ repo:
   mock: true
   db: false
   api: false
-  
+
+notification:
+  enabled: false
+
 management:
   endpoints:
     enabled-by-default: false
