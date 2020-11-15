@@ -1,6 +1,5 @@
 package juy.enc;
 
-import juy.enc.config.AutoConfiguration;
 import juy.spring.ext.YamlPropertySourceFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.jasypt.encryption.StringEncryptor;
@@ -9,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 
@@ -42,7 +40,6 @@ public class EncryptionDecryptionIntegrationTest {
 
 @Configuration
 @EnableAutoConfiguration
-@Import(AutoConfiguration.class)
 @PropertySource(value = "classpath:test-enc.yml", factory = YamlPropertySourceFactory.class)
 class EncryptionDecryptionIntegrationTestConfig {
 
