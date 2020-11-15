@@ -1,6 +1,7 @@
 repo:
-  mock: true
+  mock: false
   db: false
+  api: true
 
 management:
   endpoints:
