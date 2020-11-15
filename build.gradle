@@ -26,18 +26,29 @@ allprojects {
 		mavenCentral()
 	}
 
+	dependencyManagement {
+		dependencies {
+			dependency 'org.modelmapper:modelmapper:2.3.7'
+			dependency 'commons-io:commons-io:2.8.0'
+			dependency 'com.google.code.findbugs:jsr305:3.0.2'
+			dependency 'io.jsonwebtoken:jjwt:0.9.1'
+			dependency 'javax.xml.bind:jaxb-api:2.3.1'
+			dependency 'org.springdoc:springdoc-openapi-ui:1.2.32'
+			dependency 'com.github.tomakehurst:wiremock:2.27.2'
+		}
+	}
 	dependencies {
-		api 'commons-io:commons-io:2.8.0'
-
+		api 'commons-io:commons-io'
 		api 'org.apache.commons:commons-lang3'
 		api 'org.slf4j:slf4j-api'
 		api 'ch.qos.logback:logback-classic'
 		api 'ch.qos.logback:logback-core'
 		api 'javax.annotation:javax.annotation-api'
+
 		api 'org.springframework.boot:spring-boot'
 		api 'org.springframework.boot:spring-boot-autoconfigure'
 
-		implementation 'com.google.code.findbugs:jsr305:3.0.2'
+		implementation 'com.google.code.findbugs:jsr305'
 
 		implementation 'org.projectlombok:lombok'
 		annotationProcessor 'org.projectlombok:lombok'
