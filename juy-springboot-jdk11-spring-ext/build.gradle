@@ -1,4 +1,6 @@
 dependencies {
+	api 'org.springframework:spring-web'
+
 	api 'org.yaml:snakeyaml'
 }
 

@@ -4,6 +4,7 @@ import juy.notification.config.AutoConfiguration;
 import juy.notification.model.Email;
 import juy.notification.model.Notification;
 import juy.notification.repository.NotificationRepository;
+import juy.spring.ext.RestTemplateConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +22,7 @@ public class NotificationIntegrationTest {
         System.setProperty("notification.enabled", "true");
         // REPLACE WITH SECRET
         //System.setProperty("jasypt.encryptor.password", "");
-
+        
         final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(NotificationIntegrationTestConfig.class);
         final NotificationRepository repository = context.getBean(NotificationRepository.class);
         final Notification notification = new Notification();
@@ -50,7 +51,7 @@ public class NotificationIntegrationTest {
 
 @Configuration
 @EnableAutoConfiguration
-@Import(AutoConfiguration.class)
+@Import({AutoConfiguration.class, RestTemplateConfiguration.class})
 class NotificationIntegrationTestConfig {
 
 }

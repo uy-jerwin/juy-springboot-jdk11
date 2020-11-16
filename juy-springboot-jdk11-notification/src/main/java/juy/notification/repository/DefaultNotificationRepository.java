@@ -31,8 +31,9 @@ public class DefaultNotificationRepository implements NotificationRepository {
     @Autowired
     private NotificationProperties notificationProperties;
 
-    // TODO EXTRACT
-    private final RestTemplate restTemplate = new RestTemplate();
+    @Autowired
+    private RestTemplate restTemplate;
+
     private final ObjectMapper mapper = new ObjectMapper();
 
     @PostConstruct
@@ -55,7 +56,6 @@ public class DefaultNotificationRepository implements NotificationRepository {
             final HttpEntity<String> request = new HttpEntity<>(mapper.writeValueAsString(notification), headers);
             final ResponseEntity<String> responseEntity = restTemplate.postForEntity(notificationProperties.getServer().getUrl(), request, String.class);
             final String body = responseEntity.getBody();
-            log.info("notification response {}", body);
         } catch (IOException e)
         {
             log.error(e.getMessage(), e);
@@ -78,7 +78,7 @@ public class DefaultNotificationRepository implements NotificationRepository {
 
         final ResponseEntity<String> responseEntity = restTemplate.postForEntity(notificationProperties.getAuth().getUrl(), request, String.class);
         final String body = responseEntity.getBody();
-        log.info("authentication response {} ", body);
+
         if (responseEntity.getStatusCode().is2xxSuccessful())
         {
             final JsonNode node = mapper.readTree(new StringReader(body));
