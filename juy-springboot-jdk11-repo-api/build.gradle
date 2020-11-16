@@ -3,6 +3,8 @@ dependencies {
     api project(':juy-springboot-jdk11-spring-ext')
 
     api 'com.github.tomakehurst:wiremock'
+
+    api 'org.springframework.boot:spring-boot-starter-web'
 }
 
 bootJar {

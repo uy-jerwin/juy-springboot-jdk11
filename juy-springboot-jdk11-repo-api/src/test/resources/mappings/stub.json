@@ -1,0 +1,31 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "url": "/samples",
+        "method": "POST"
+      },
+      "response": {
+        "status": 201
+      }
+    },
+    {
+      "request": {
+        "url": "/samples/1",
+        "method": "PUT"
+      },
+      "response": {
+        "status": 200
+      }
+    },
+    {
+      "request": {
+        "url": "/samples/1",
+        "method": "DELETE"
+      },
+      "response": {
+        "status": 200
+      }
+    }
+  ]
+}
