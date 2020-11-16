@@ -20,7 +20,8 @@ public class ApiSampleRepository implements SampleRepository {
     @Autowired
     private WiremockProperties wiremockProperties;
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    @Autowired
+    private RestTemplate restTemplate;
 
     @Override
     public Sample save(Sample sample) {

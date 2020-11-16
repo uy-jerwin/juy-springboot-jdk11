@@ -3,6 +3,7 @@ package juy.repository.api;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import juy.repository.SampleRepository;
 import juy.repository.api.config.AutoConfiguration;
+import juy.repository.api.config.RestTemplateConfiguration;
 import juy.repository.model.Sample;
 import juy.spring.ext.YamlPropertySourceFactory;
 import org.junit.jupiter.api.Assertions;
@@ -69,7 +70,7 @@ public class WireMockConfigurationTest {
 }
 
 @Configuration
-@ImportAutoConfiguration(value = { AutoConfiguration.class })
+@ImportAutoConfiguration(value = { AutoConfiguration.class, RestTemplateConfiguration.class })
 @PropertySource(value = "classpath:repo-api-test.yml", factory = YamlPropertySourceFactory.class)
 class WireMockConfigurationTestConfig {
 
