@@ -1,3 +1,7 @@
+dependencies {
+	api 'org.yaml:snakeyaml'
+}
+
 bootJar {
 	enabled = false
 }

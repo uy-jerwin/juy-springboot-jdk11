@@ -1,0 +1,13 @@
+dependencies {
+	api project(':juy-springboot-jdk11-spring-ext')
+
+	api 'com.github.ulisesbocchio:jasypt-spring-boot-starter'
+}
+
+bootJar {
+	enabled = false
+}
+
+jar {
+	enabled = true
+}
