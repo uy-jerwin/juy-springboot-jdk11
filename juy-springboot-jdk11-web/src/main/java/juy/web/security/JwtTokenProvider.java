@@ -19,7 +19,7 @@ import java.util.*;
 public class JwtTokenProvider {
 
     private String secretKey = "12345";
-    private long validityInMilliseconds = 3600000;
+    private final long validityInMilliseconds = 3600000;
 
     @Autowired
     private PassThroughUserDetailsService UserDetailsService;
@@ -32,9 +32,7 @@ public class JwtTokenProvider {
     public String createToken(String username) {
 
         final Claims claims = Jwts.claims().setSubject(username);
-        claims.put("auth", Arrays.asList(new SimpleGrantedAuthority[] {
-                new SimpleGrantedAuthority("ADMIN")
-        }));
+        claims.put("auth", Arrays.asList(new SimpleGrantedAuthority("ADMIN")));
 
         final Date now = new Date();
         final Date validity = new Date(now.getTime() + validityInMilliseconds);

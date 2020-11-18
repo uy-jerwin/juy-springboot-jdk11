@@ -7,10 +7,9 @@ import juy.repository.model.Sample;
 import juy.spring.ext.YamlPropertySourceFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
-import org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
@@ -54,9 +53,7 @@ public class H2ConfigurationTest {
 }
 
 @Configuration
-@ImportAutoConfiguration(value = {
-        AutoConfiguration.class, LiquibaseAutoConfiguration.class
-} )
+@Import(AutoConfiguration.class)
 @PropertySource(value = "classpath:repo-db-test.yml", factory = YamlPropertySourceFactory.class)
 class H2ConfigurationTestConfig {
 

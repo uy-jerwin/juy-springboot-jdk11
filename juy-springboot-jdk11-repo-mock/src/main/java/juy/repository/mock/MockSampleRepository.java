@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class MockSampleRepository implements SampleRepository {
 
     private final List<Sample> samples = new ArrayList<>();
-    private AtomicInteger index = new AtomicInteger(0);
+    private final AtomicInteger index = new AtomicInteger(0);
 
     @PostConstruct
     public void init()

@@ -33,7 +33,7 @@ public class H2Configuration {
     public LocalContainerEntityManagerFactoryBean userEntityManager() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "juy.repository.db.model" });
+        em.setPackagesToScan("juy.repository.db.model");
 
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);

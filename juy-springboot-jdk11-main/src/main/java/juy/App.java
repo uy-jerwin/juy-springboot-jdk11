@@ -2,9 +2,8 @@ package juy;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
-@SpringBootApplication(scanBasePackages = {"juy.ext"}, exclude = { DataSourceAutoConfiguration.class })
+@SpringBootApplication(scanBasePackages = {"juy.ext"})
 public class App {
 	
 	public static void main(String[] args) {

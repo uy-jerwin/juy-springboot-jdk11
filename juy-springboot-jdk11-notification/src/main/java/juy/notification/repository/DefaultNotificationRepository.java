@@ -67,7 +67,7 @@ public class DefaultNotificationRepository implements NotificationRepository {
     {
         final HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        headers.setAccept(Arrays.asList(new MediaType[] { MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN }));
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN));
 
         final MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
         map.add("grant_type", notificationProperties.getAuth().getGrantType());
