@@ -2,4 +2,4 @@ repo:
   api:
     host: localhost
     port: 6969
-
+    url: http://localhost:6969/samples

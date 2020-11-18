@@ -6,7 +6,11 @@
         "method": "POST"
       },
       "response": {
-        "status": 201
+        "status": 201,
+        "jsonBody": {"id":1,"name":"sample name","value":"sample value","createdAt":"2020-11-18T13:42:15.069Z"},
+        "headers": {
+          "Content-Type": "application/json"
+        }
       }
     },
     {
@@ -15,7 +19,11 @@
         "method": "PUT"
       },
       "response": {
-        "status": 200
+        "status": 200,
+        "jsonBody": {"id":1,"name":"sample name","value":"sample value","updatedAt":"2020-11-18T13:42:15.069Z"},
+        "headers": {
+          "Content-Type": "application/json"
+        }
       }
     },
     {
@@ -25,6 +33,32 @@
       },
       "response": {
         "status": 200
+      }
+    },
+    {
+      "request": {
+        "url": "/samples/1",
+        "method": "GET"
+      },
+      "response": {
+        "status": 200,
+        "jsonBody": {"id":1,"name":"sample name","value":"sample value","createdAt":"2020-11-18T13:42:15.069Z"},
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "url": "/samples",
+        "method": "GET"
+      },
+      "response": {
+        "status": 200,
+        "jsonBody": [{"id":1,"name":"sample name","value":"sample value","createdAt":"2020-11-18T13:42:15.069Z"},{"id":2,"name":"sample name 2","value":"sample value 2","createdAt":"2020-11-19T13:42:15.069Z"}],
+        "headers": {
+          "Content-Type": "application/json"
+        }
       }
     }
   ]

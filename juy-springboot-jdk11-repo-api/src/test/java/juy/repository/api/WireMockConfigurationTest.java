@@ -3,8 +3,8 @@ package juy.repository.api;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import juy.repository.SampleRepository;
 import juy.repository.api.config.AutoConfiguration;
-import juy.repository.api.config.RestTemplateConfiguration;
 import juy.repository.model.Sample;
+import juy.spring.ext.RestTemplateConfiguration;
 import juy.spring.ext.YamlPropertySourceFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -13,6 +13,8 @@ import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+
+import java.util.List;
 
 public class WireMockConfigurationTest {
 
@@ -30,10 +32,11 @@ public class WireMockConfigurationTest {
     @Test
     public void shouldSave() {
         final Sample sample = new Sample();
-        sample.setName("test");
-        sample.setValue("test value");
+        sample.setName("sample name");
+        sample.setValue("sample value");
         final SampleRepository repository = context.getBean(ApiSampleRepository.class);
         final Sample result = repository.save(sample);
+        Assertions.assertEquals(1, result.getId());
         Assertions.assertEquals(sample.getName(), result.getName());
         Assertions.assertEquals(sample.getValue(), result.getValue());
     }
@@ -42,8 +45,8 @@ public class WireMockConfigurationTest {
     public void shouldReplace() {
         final Sample sample = new Sample();
         sample.setId(1);
-        sample.setName("test");
-        sample.setValue("test value");
+        sample.setName("sample name");
+        sample.setValue("sample value");
         final SampleRepository repository = context.getBean(ApiSampleRepository.class);
         Assertions.assertTrue(repository.replace(sample));
     }
@@ -52,8 +55,8 @@ public class WireMockConfigurationTest {
     public void shouldUpdate() {
         final Sample sample = new Sample();
         sample.setId(1);
-        sample.setName("test");
-        sample.setValue("test value");
+        sample.setName("sample name");
+        sample.setValue("sample value");
         final SampleRepository repository = context.getBean(ApiSampleRepository.class);
         Assertions.assertTrue(repository.update(sample));
     }
@@ -66,6 +69,27 @@ public class WireMockConfigurationTest {
         sample.setValue("test value");
         final SampleRepository repository = context.getBean(ApiSampleRepository.class);
         Assertions.assertTrue(repository.delete(sample.getId()));
+    }
+
+    @Test
+    public void shouldFindById() {
+        final SampleRepository repository = context.getBean(ApiSampleRepository.class);
+        final Sample sample = repository.findById(1);
+        Assertions.assertEquals(1, sample.getId());
+        Assertions.assertEquals("sample name", sample.getName());
+        Assertions.assertEquals("sample value", sample.getValue());
+    }
+
+    @Test
+    public void shouldList() {
+        final SampleRepository repository = context.getBean(ApiSampleRepository.class);
+        final List<Sample> samples = repository.list();
+        Assertions.assertEquals(1, samples.get(0).getId());
+        Assertions.assertEquals("sample name", samples.get(0).getName());
+        Assertions.assertEquals("sample value", samples.get(0).getValue());
+        Assertions.assertEquals(2, samples.get(1).getId());
+        Assertions.assertEquals("sample name 2", samples.get(1).getName());
+        Assertions.assertEquals("sample value 2", samples.get(1).getValue());
     }
 }
 
